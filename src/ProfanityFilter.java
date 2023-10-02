@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,9 +12,9 @@ public class ProfanityFilter {
 	private List<Character> punctuation = Arrays.asList(',', '.', '!', '?');
 
 
-	public ProfanityFilter() {
-		scanner = new Scanner(System.in);
-		replacementChars = Arrays.asList('*', '&', '#', '$', '%', '%');
+	public ProfanityFilter(InputStream inputStream) {
+		scanner = new Scanner(inputStream);
+		replacementChars = Arrays.asList('*', '&', '#', '$', '%');
 		swearWords = new ArrayList<>();
 		linesToFilter = new ArrayList<>();
 	}
@@ -32,6 +33,7 @@ public class ProfanityFilter {
 			}
 			linesToFilter.add(input);
 		} while (scanner.hasNextLine());
+		scanner.close();
 	}
 
 	public void filterLines() {
@@ -58,16 +60,16 @@ public class ProfanityFilter {
 		for (String word : input) {
 			stringBuilder.append(word);
 			// fixme if next word isnt a punctuation char then add whitespace
-			if (!(punctuation.contains(input.get(input.indexOf(word) + 1)))) {
+			//if (!(punctuation.contains(input.get(input.indexOf(word) + 1)))) {
 				stringBuilder.append(" ");
-			}
+		//	}
 		}
 		return String.valueOf(stringBuilder);
 	}
 
 	public void printLines() {
 		for (String line : linesToFilter) {
-			System.out.println(line);
+			System.out.print(line);
 		}
 	}
 
@@ -85,7 +87,7 @@ public class ProfanityFilter {
 	}
 
 	// todo String replacedText = matcher.replaceAll("***");
-	private List<String> getTokens(String input) {
+	public List<String> getTokens(String input) {
 		List<String> tokens = new ArrayList<>();
 		Pattern pattern = Pattern.compile("\\b\\w+\\b|[,.!?]", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(input);
@@ -96,11 +98,11 @@ public class ProfanityFilter {
 		return tokens;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("Hello world!");
-		ProfanityFilter filter = new ProfanityFilter();
-		filter.readInput();
-		filter.filterLines();
-		filter.printLines();
-	}
+//	public static void main(String[] args) {
+//		System.out.println("Hello world!");
+//		ProfanityFilter filter = new ProfanityFilter(System.in);
+//		filter.readInput();
+//		filter.filterLines();
+//		filter.printLines();
+//	}
 }
