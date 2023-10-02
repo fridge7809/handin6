@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProfanityFilter {
@@ -6,8 +7,8 @@ public class ProfanityFilter {
 	private final List<Character> replacementChars;
 	private List<String> swearWords;
 	private List<String> linesToFilter;
-	private Random random;
-	private String pattern = "([,.!?])+";
+	private String pattern = "\\s+|\\p{Punct}";
+	private List<Character> punctuation = Arrays.asList(',', '.', '!', '?');
 
 
 	public ProfanityFilter() {
@@ -15,8 +16,6 @@ public class ProfanityFilter {
 		replacementChars = Arrays.asList('*', '&', '#', '$', '%', '%');
 		swearWords = new ArrayList<>();
 		linesToFilter = new ArrayList<>();
-		Pattern pattern;
-		random = new Random();
 	}
 
 	public void readInput() {
@@ -24,7 +23,7 @@ public class ProfanityFilter {
 		do {
 			String input = scanner.nextLine();
 			if (firstLine){
-				swearWords.addAll(splitString(input));
+				swearWords.addAll(getTokens(input));
 				firstLine = false;
 				continue;
 			}
@@ -36,12 +35,11 @@ public class ProfanityFilter {
 	}
 
 	public void filterLines() {
+		// todo simplify, extract logic
 		Iterator<String> iterator = linesToFilter.iterator();
 		while (iterator.hasNext()) {
 			String currentLine = iterator.next();
-			List<String> wordsInLine = splitString(currentLine);
-
-			// save indices of swearwords
+			List<String> wordsInLine = getTokens(currentLine);
 			List<Integer> swearWordIndices = new ArrayList<>();
 			for (int i = 0; i < wordsInLine.size(); i++) {
 				if (swearWords.contains(wordsInLine.get(i).toLowerCase())) {
@@ -59,7 +57,10 @@ public class ProfanityFilter {
 		StringBuilder stringBuilder = new StringBuilder();
 		for (String word : input) {
 			stringBuilder.append(word);
-			stringBuilder.append(" ");
+			// fixme if next word isnt a punctuation char then add whitespace
+			if (!(punctuation.contains(input.get(input.indexOf(word) + 1)))) {
+				stringBuilder.append(" ");
+			}
 		}
 		return String.valueOf(stringBuilder);
 	}
@@ -83,8 +84,16 @@ public class ProfanityFilter {
 		return String.valueOf(builder);
 	}
 
-	private List<String> splitString(String input) {
-		return Arrays.asList(input.toLowerCase().split(pattern));
+	// todo String replacedText = matcher.replaceAll("***");
+	private List<String> getTokens(String input) {
+		List<String> tokens = new ArrayList<>();
+		Pattern pattern = Pattern.compile("\\b\\w+\\b|[,.!?]", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = pattern.matcher(input);
+		while (matcher.find()) {
+			String token = matcher.group().toLowerCase();
+			tokens.add(token);
+		}
+		return tokens;
 	}
 
 	public static void main(String[] args) {
