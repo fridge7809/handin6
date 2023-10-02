@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class ProfanityFilter {
 	private Scanner scanner;
@@ -6,12 +7,15 @@ public class ProfanityFilter {
 	private List<String> swearWords;
 	private List<String> linesToFilter;
 	private Random random;
+	private String pattern = "([,.!?])+";
+
 
 	public ProfanityFilter() {
 		scanner = new Scanner(System.in);
 		replacementChars = Arrays.asList('*', '&', '#', '$', '%', '%');
 		swearWords = new ArrayList<>();
 		linesToFilter = new ArrayList<>();
+		Pattern pattern;
 		random = new Random();
 	}
 
@@ -40,7 +44,7 @@ public class ProfanityFilter {
 			// save indices of swearwords
 			List<Integer> swearWordIndices = new ArrayList<>();
 			for (int i = 0; i < wordsInLine.size(); i++) {
-				if (swearWords.contains(wordsInLine.get(i))) {
+				if (swearWords.contains(wordsInLine.get(i).toLowerCase())) {
 					swearWordIndices.add(i);
 				}
 			}
@@ -68,15 +72,19 @@ public class ProfanityFilter {
 
 	private String replaceWord(String word) {
 		StringBuilder builder = new StringBuilder(word);
+		int charIndex = 0;
 		for (int i = 0; i < builder.length(); i++) {
-			int randomInt = random.nextInt(replacementChars.size());
-			builder.replace(i, i + 1, String.valueOf(replacementChars.get(randomInt)));
+			if (i == 6) {
+				charIndex = 0;
+			}
+			builder.replace(i, i + 1, String.valueOf(replacementChars.get(charIndex)));
+			charIndex++;
 		}
 		return String.valueOf(builder);
 	}
 
 	private List<String> splitString(String input) {
-		return Arrays.asList(input.split(" "));
+		return Arrays.asList(input.toLowerCase().split(pattern));
 	}
 
 	public static void main(String[] args) {
