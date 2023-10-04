@@ -32,13 +32,13 @@ class ProfanityFilterTest {
 				"bandeord");
 		//ByteArrayInputStream mockInput = new ByteArrayInputStream(swearWords.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(System.in);
-		assertEquals(expectedResult, profanityFilter.getTokens(swearWords));
+		assertEquals(expectedResult, profanityFilter.getTokens(swearWords, false));
 	}
 
 	@Test
 	void test() {
 		String input = "cudle\nhello i am very cudle hehe";
-		String expected = "hello i am very *&#$% hehe";
+		String expected = "hello i am very *&#$% hehe\n";
 		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
 		profanityFilter.readInput();
@@ -49,7 +49,38 @@ class ProfanityFilterTest {
 		profanityFilter.printLines();
 		String actual = outputStream.toString();
 		assertEquals(expected, actual);
+	}
 
+	@Test
+	void test_ignoreCase() {
+		String input = "HELLO\nhello i am very cudle hehe";
+		String expected = "*&#$% i am very cudle hehe\n";
+		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
+		profanityFilter.readInput();
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		profanityFilter.filterLines();
+		profanityFilter.printLines();
+		String actual = outputStream.toString();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void test_longSwearWords() {
+		String input = "longswearword\nthis is a longswearword";
+		String expected = "this is a *&#$%*&#$%*&#\n";
+		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
+		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
+		profanityFilter.readInput();
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(outputStream);
+		System.setOut(printStream);
+		profanityFilter.filterLines();
+		profanityFilter.printLines();
+		String actual = outputStream.toString();
+		assertEquals(expected, actual);
 	}
 
 	@AfterEach

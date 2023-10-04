@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d1fdd21-637a-468c-93f1-ff66f269fd6c" name="Changes" comment="Add test class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProfanityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfanityFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +54,7 @@
     "create.test.in.the.same.root": "true",
     "git-widget-placeholder": "tests",
     "jdk.selected.JAVA_MODULE": "20",
+    "last.edited.regexp": "'",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,13 +74,19 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProfanityFilterTest.test">
-    <configuration name="ProfanityFilterTest.regEx_splitsTokensCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.ProfanityFilter">
+    <configuration name="ProfanityFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProfanityFilter" />
+      <module name="handin6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfanityFilterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="handin6" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProfanityFilterTest" />
-      <option name="METHOD_NAME" value="regEx_splitsTokensCorrectly" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,10 +101,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProfanityFilterTest.test_ignoreCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="handin6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProfanityFilterTest" />
+      <option name="METHOD_NAME" value="test_ignoreCase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfanityFilterTest.test_longSwearWords" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="handin6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProfanityFilterTest" />
+      <option name="METHOD_NAME" value="test_longSwearWords" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProfanityFilter" />
+        <item itemvalue="JUnit.ProfanityFilterTest" />
         <item itemvalue="JUnit.ProfanityFilterTest.test" />
-        <item itemvalue="JUnit.ProfanityFilterTest.regEx_splitsTokensCorrectly" />
+        <item itemvalue="JUnit.ProfanityFilterTest.test_ignoreCase" />
+        <item itemvalue="JUnit.ProfanityFilterTest.test_longSwearWords" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696278637618</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add test class">
+      <option name="closed" value="true" />
+      <created>1696278698335</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696278698335</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,18 +237,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ProfanityFilter.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ProfanityFilter.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ProfanityFilter.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="9" />
+          <line>34</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
