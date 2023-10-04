@@ -41,12 +41,10 @@ class ProfanityFilterTest {
 		String expected = "hello i am very *&#$% hehe\n";
 		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
-		profanityFilter.readInput();
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
-		profanityFilter.filterLines();
-		profanityFilter.printLines();
+		profanityFilter.run();
 		String actual = outputStream.toString();
 		assertEquals(expected, actual);
 	}
@@ -57,12 +55,10 @@ class ProfanityFilterTest {
 		String expected = "*&#$% i am very cudle hehe\n";
 		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
-		profanityFilter.readInput();
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
-		profanityFilter.filterLines();
-		profanityFilter.printLines();
+		profanityFilter.run();
 		String actual = outputStream.toString();
 		assertEquals(expected, actual);
 	}
@@ -73,12 +69,10 @@ class ProfanityFilterTest {
 		String expected = "this is a *&#$%*&#$%*&#\n";
 		ByteArrayInputStream mockInput = new ByteArrayInputStream(input.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(mockInput);
-		profanityFilter.readInput();
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		System.setOut(printStream);
-		profanityFilter.filterLines();
-		profanityFilter.printLines();
+		profanityFilter.run();
 		String actual = outputStream.toString();
 		assertEquals(expected, actual);
 	}

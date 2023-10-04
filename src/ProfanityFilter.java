@@ -4,20 +4,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProfanityFilter {
-	private Scanner scanner;
+	private final InputStream inputStream;
 	private final List<Character> replacementChars;
-	private List<String> swearWords;
-	private List<String> linesToFilter;
+	private final List<String> swearWords;
+	private final List<String> linesToFilter;
 
 	public ProfanityFilter(InputStream inputStream) {
-		scanner = new Scanner(inputStream);
-		replacementChars = Arrays.asList('*', '&', '#', '$', '%');
-		swearWords = new ArrayList<>();
-		linesToFilter = new ArrayList<>();
+		this.inputStream = inputStream;
+		this.replacementChars = Arrays.asList('*', '&', '#', '$', '%');
+		this.swearWords = new ArrayList<>();
+		this.linesToFilter = new ArrayList<>();
 	}
 
-	public void readInput() {
+	public void run() {
+		readInput();
+		filterLines();
+		printFilteredLines();
+	}
+
+	// todo refac
+	private void readInput() {
 		boolean firstLine = true;
+		Scanner scanner = new Scanner(inputStream);
 		do {
 			String input = scanner.nextLine();
 			if (firstLine){
@@ -37,23 +45,22 @@ public class ProfanityFilter {
 		scanner.close();
 	}
 
-	public void filterLines() {
-		Iterator<String> iterator = linesToFilter.iterator();
-		do {
-			String currentLine = iterator.next();
+	private void filterLines() {
+		for (int i = 0; i < linesToFilter.size(); i++) {
+			String currentLine = linesToFilter.get(i);
 			List<String> wordsInLine = getTokens(currentLine, true);
-			int wordIndex = 0;
-			for (String word : wordsInLine) {
+
+			for (int j = 0; j < wordsInLine.size(); j++) {
+				String word = wordsInLine.get(j);
 				for (String swearWord : swearWords) {
 					if (word.equalsIgnoreCase(swearWord)) {
-						String filteredWord = replaceWord(word);
-						wordsInLine.set(wordIndex, filteredWord);
+						wordsInLine.set(j, filterWord(word));
 					}
 				}
-				wordIndex++;
 			}
-			linesToFilter.set(linesToFilter.indexOf(currentLine), lineBuilder(wordsInLine));
-		} while (iterator.hasNext());
+
+			linesToFilter.set(i, lineBuilder(wordsInLine));
+		}
 	}
 
 	private String lineBuilder(List<String> input) {
@@ -64,13 +71,13 @@ public class ProfanityFilter {
 		return String.valueOf(stringBuilder);
 	}
 
-	public void printLines() {
+	private void printFilteredLines() {
 		for (String line : linesToFilter) {
 			System.out.println(line);
 		}
 	}
 
-	private String replaceWord(String word) {
+	private String filterWord(String word) {
 		StringBuilder builder = new StringBuilder(word);
 		int charIndex = 0;
 		for (int i = 0; i < builder.length(); i++) {
@@ -101,8 +108,6 @@ public class ProfanityFilter {
 
 	public static void main(String[] args) {
 		ProfanityFilter filter = new ProfanityFilter(System.in);
-		filter.readInput();
-		filter.filterLines();
-		filter.printLines();
+		filter.run();
 	}
 }

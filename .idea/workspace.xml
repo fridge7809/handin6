@@ -52,7 +52,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "tests",
+    "git-widget-placeholder": "refac",
     "jdk.selected.JAVA_MODULE": "20",
     "last.edited.regexp": "'",
     "node.js.detected.package.eslint": "true",
@@ -231,17 +231,6 @@
     <MESSAGE value="Begin regex solution" />
     <MESSAGE value="Add test class" />
     <option name="LAST_COMMIT_MESSAGE" value="Add test class" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ProfanityFilter.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
