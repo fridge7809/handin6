@@ -26,7 +26,8 @@ public class ProfanityFilter {
 	}
 
 	private void readSwearWords() {
-		swearWords.addAll(getTokens(scanner.nextLine(), false));
+		Pattern pattern = Pattern.compile("\\b\\w+\\b", Pattern.CASE_INSENSITIVE);
+		swearWords.addAll(getTokens(scanner.nextLine(), pattern));
 	}
 
 	private void readLinesToFilter() {
@@ -37,15 +38,16 @@ public class ProfanityFilter {
 	}
 
 	private void filterLines() {
+		Pattern pattern = Pattern.compile("\\b\\w+\\b|[,.!?'-]|\\s", Pattern.CASE_INSENSITIVE);
 		for (int i = 0; i < linesToFilter.size(); i++) {
 			String currentLine = linesToFilter.get(i);
-			List<String> wordsInLine = getTokens(currentLine, true);
+			List<String> wordsInLine = getTokens(currentLine, pattern);
 
 			for (int j = 0; j < wordsInLine.size(); j++) {
 				String word = wordsInLine.get(j);
 				for (String swearWord : swearWords) {
 					if (word.equalsIgnoreCase(swearWord)) {
-						wordsInLine.set(j, filterWord(word));
+						wordsInLine.set(j, getFilteredWord(word));
 					}
 				}
 			}
@@ -68,7 +70,7 @@ public class ProfanityFilter {
 		}
 	}
 
-	private String filterWord(String word) {
+	private String getFilteredWord(String word) {
 		StringBuilder builder = new StringBuilder(word);
 		int charIndex = 0;
 		for (int i = 0; i < builder.length(); i++) {
@@ -81,14 +83,8 @@ public class ProfanityFilter {
 		return String.valueOf(builder);
 	}
 
-	public List<String> getTokens(String input, boolean includePunctuationAndWhitespace) {
+	public List<String> getTokens(String input, Pattern pattern) {
 		List<String> tokens = new ArrayList<>();
-		Pattern pattern;
-		if (!includePunctuationAndWhitespace) {
-			pattern = Pattern.compile("\\b\\w+\\b", Pattern.CASE_INSENSITIVE);
-		} else {
-			pattern = Pattern.compile("\\b\\w+\\b|[,.!?'-]|\\s", Pattern.CASE_INSENSITIVE);
-		}
 		Matcher matcher = pattern.matcher(input);
 		while (matcher.find()) {
 			String token = matcher.group();

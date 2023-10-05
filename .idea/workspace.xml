@@ -7,6 +7,7 @@
     <list default="true" id="6d1fdd21-637a-468c-93f1-ff66f269fd6c" name="Changes" comment="Refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProfanityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfanityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "test",
+    "git-widget-placeholder": "tokensignature",
     "jdk.selected.JAVA_MODULE": "20",
     "last.edited.regexp": "hej jeg er er! her nej?? FUCK?  ",
     "node.js.detected.package.eslint": "true",
@@ -73,19 +74,22 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ProfanityFilter">
-    <configuration name="ProfanityFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ProfanityFilter" />
-      <module name="handin6" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ProfanityFilterTest">
     <configuration name="ProfanityFilterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="handin6" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ProfanityFilterTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfanityFilterTest.regEx_splitsTokensCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="handin6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProfanityFilterTest" />
+      <option name="METHOD_NAME" value="regEx_splitsTokensCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ProfanityFilter" />
         <item itemvalue="JUnit.ProfanityFilterTest" />
-        <item itemvalue="JUnit.ProfanityFilterTest.test" />
-        <item itemvalue="JUnit.ProfanityFilterTest.test_ignoreCase" />
+        <item itemvalue="JUnit.ProfanityFilterTest.regEx_splitsTokensCorrectly" />
         <item itemvalue="JUnit.ProfanityFilterTest.test_longSwearWords" />
+        <item itemvalue="JUnit.ProfanityFilterTest.test_ignoreCase" />
+        <item itemvalue="JUnit.ProfanityFilterTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -218,19 +222,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="tests" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>

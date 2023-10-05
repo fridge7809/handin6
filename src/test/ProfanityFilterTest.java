@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,7 +33,8 @@ class ProfanityFilterTest {
 				"bandeord");
 		//ByteArrayInputStream mockInput = new ByteArrayInputStream(swearWords.getBytes());
 		ProfanityFilter profanityFilter = new ProfanityFilter(System.in);
-		assertEquals(expectedResult, profanityFilter.getTokens(swearWords, false));
+		Pattern pattern = Pattern.compile("\\b\\w+\\b|[,.!?'-]", Pattern.CASE_INSENSITIVE);
+		assertEquals(expectedResult, profanityFilter.getTokens(swearWords, pattern));
 	}
 
 	@Test
