@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d1fdd21-637a-468c-93f1-ff66f269fd6c" name="Changes" comment="Add test class">
+    <list default="true" id="6d1fdd21-637a-468c-93f1-ff66f269fd6c" name="Changes" comment="Refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProfanityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfanityFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ProfanityFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +51,9 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "refac",
+    "git-widget-placeholder": "test",
     "jdk.selected.JAVA_MODULE": "20",
-    "last.edited.regexp": "'",
+    "last.edited.regexp": "hej jeg er er! her nej?? FUCK?  ",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -140,6 +139,9 @@
       <option name="presentableId" value="Default" />
       <updated>1696248013405</updated>
       <workItem from="1696248014669" duration="7239000" />
+      <workItem from="1696488190597" duration="51000" />
+      <workItem from="1696489153881" duration="71000" />
+      <workItem from="1696493759485" duration="1386000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -197,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696278698335</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactor">
+      <option name="closed" value="true" />
+      <created>1696414877224</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696414877224</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +240,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Begin regex solution" />
     <MESSAGE value="Add test class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add test class" />
+    <MESSAGE value="Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

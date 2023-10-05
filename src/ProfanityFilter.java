@@ -8,39 +8,30 @@ public class ProfanityFilter {
 	private final List<Character> replacementChars;
 	private final List<String> swearWords;
 	private final List<String> linesToFilter;
+	private final Scanner scanner;
 
 	public ProfanityFilter(InputStream inputStream) {
 		this.inputStream = inputStream;
 		this.replacementChars = Arrays.asList('*', '&', '#', '$', '%');
 		this.swearWords = new ArrayList<>();
 		this.linesToFilter = new ArrayList<>();
+		this.scanner = new Scanner(this.inputStream);
 	}
 
 	public void run() {
-		readInput();
+		readSwearWords();
+		readLinesToFilter();
 		filterLines();
 		printFilteredLines();
 	}
 
-	// todo refac
-	private void readInput() {
-		boolean firstLine = true;
-		Scanner scanner = new Scanner(inputStream);
+	private void readSwearWords() {
+		swearWords.addAll(getTokens(scanner.nextLine(), false));
+	}
+
+	private void readLinesToFilter() {
 		do {
-			String input = scanner.nextLine();
-			if (firstLine){
-				List<String> tokens = new ArrayList<>();
-				for (String token : getTokens(input, false)) {
-					if (Pattern.matches("\\p{Punct}", token)) {
-						continue;
-					}
-					tokens.add(token);
-				}
-				swearWords.addAll(tokens);
-				firstLine = false;
-				continue;
-			}
-			linesToFilter.add(input);
+			linesToFilter.add(scanner.nextLine());
 		} while (scanner.hasNextLine());
 		scanner.close();
 	}
@@ -90,11 +81,11 @@ public class ProfanityFilter {
 		return String.valueOf(builder);
 	}
 
-	public List<String> getTokens(String input, boolean includeWhitespace) {
+	public List<String> getTokens(String input, boolean includePunctuationAndWhitespace) {
 		List<String> tokens = new ArrayList<>();
 		Pattern pattern;
-		if (!includeWhitespace) {
-			pattern = Pattern.compile("\\b\\w+\\b|[,.!?'-]", Pattern.CASE_INSENSITIVE);
+		if (!includePunctuationAndWhitespace) {
+			pattern = Pattern.compile("\\b\\w+\\b", Pattern.CASE_INSENSITIVE);
 		} else {
 			pattern = Pattern.compile("\\b\\w+\\b|[,.!?'-]|\\s", Pattern.CASE_INSENSITIVE);
 		}
